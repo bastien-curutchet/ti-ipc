@@ -41,8 +41,7 @@ var Idle = xdc.useModule('ti.sysbios.knl.Idle');
 Idle.addFunc('&VirtQueue_cacheWb');
 
 var System = xdc.useModule('xdc.runtime.System');
-/* Use ti.trace.SysMin for remoteproc to handle trace as circular buffer */
-var SysMin = xdc.useModule('ti.trace.SysMin');
+var SysMin = xdc.useModule('xdc.runtime.SysMin');
 System.SupportProxy = SysMin;
 
 var Diags = xdc.useModule('xdc.runtime.Diags');
@@ -223,6 +222,8 @@ else if (Program.platformName.match(/^ti\.platforms\.cortexR:AM65X/) &&
 /* TODO: Need to check on equivalent for K3 */
 /*     Hwi.enableException = true; */
 
+    var SysMin = xdc.useModule('ti.trace.SysMin');
+    System.SupportProxy = SysMin;
     SysMin.bufSize  = 0x8000;
 
     Program.sectMap[".tracebuf"] = "TRACE_BUF";
