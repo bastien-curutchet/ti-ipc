@@ -133,11 +133,12 @@ function module$static$init(mod, params)
     }
     else {
         /*
-         *  Need 2 words:
+         *  Need 3 words:
          *    1 word for the SharedRegion Ptr.
          *    1 word for the proc id of creator and if remote is allowed.
+         *    1 word for upper 32-bits in case of > 32-bit address
          */
-        GateMP.nameSrvPrms.maxValueLen = 2 * target.stdTypes["t_Int32"].size;
+        GateMP.nameSrvPrms.maxValueLen = 3 * target.stdTypes["t_Int32"].size;
 	mod.hostSupport = false;
     }
 
