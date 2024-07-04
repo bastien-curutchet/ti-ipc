@@ -187,6 +187,7 @@ Int Ipc_start(Void)
         }
     }
 
+    PRINTVERBOSE0("BANZAI ! CONNECT TO LAD\n");
     /* establish a communication link to the LAD daemon */
     ladStatus = LAD_connect(&ladHandle);
 
